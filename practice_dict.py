@@ -67,8 +67,9 @@ def find_unique_common_items(items1, items2):
         [2]
     """
 
+    unique_common_item = set(items1) & set(items2)
 
-    return []
+    return unique_common_item
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pair summing to 0.
@@ -96,13 +97,10 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
-    zero_pairs = set()
-    for num in numbers:
-        if x + y == 0:
-            zero_pairs.add()
-
-    # zero_pairs = [x + y for x, y in numbers if x + y == 0]
-    # numbers.append(zero_pairs)
+    zero_pairs = []
+    a = 0
+    zero_pairs = [numbers[a] + numbers[(a + 1)] for num in numbers]
+    numbers.append(zero_pairs)
 
     return zero_pairs
 
@@ -122,7 +120,6 @@ def top_chars(phrase):
         ['i', 'n']
 
     If there is not a tie, simply return a list with one item.
-
     For example::
 
         >>> top_chars("Shake it off, shake it off.")
@@ -131,8 +128,31 @@ def top_chars(phrase):
     Do not count spaces, but count all other characters.
 
     """
+    word_count = {}
+    for letter in phrase:
+        word_count = phrase.count(letter)
+        word_count[letter] = str(word_count)
+    print word_count
+    # maxchar = []
+    # maxcount = 0
+    # for char in lst_word:
+    #     word_count[char] = word_count.get(char, 0) + 1
+    #     # for char, freq in word_count.items():
+    #     #     if freq > maxcount:
+    #     #         maxcount = freq
+    #     #         maxchar.append(char)
+    # print word_count
 
-    return []
+    # key_with_max = list(word_count).count(freq)
+    # print key_with_max
+
+    # key_with_max = word_count.get(word_count[key]max(word_count.values()), word_count.keys())
+    # print key_with_max
+    # top_char = sorted((key_with_max) for char, freq in word_count.items())
+
+
+    # print top_char
+
 
 #####################################################################
 # You can ignore everything below this.

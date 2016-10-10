@@ -28,9 +28,18 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
+    wc_dict = {}
+    phrase = phrase.split()
+    for word in phrase:
+        wc_dict[word] = wc_dict.get(word, 0) + 1
 
-    return {}
+    #Below was the original codes and shortened it after going over the notes
+        # if word in wc_dict:
+        #     wc_dict[word] += 1
+        # else:
+        #     wc_dict[word] = 1
 
+    return wc_dict
 
 def get_melon_price(melon_name):
     """Given a melon name, return the price of the melon
@@ -51,8 +60,15 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
+    melon_price = {"Watermelon": 2.95, "Cantaloupe": 2.50, "Musk": 3.25,
+                   "Christmas": 14.25}
 
-    return 0
+    if melon_name in melon_price:
+        return melon_price.get(melon_name)
+        #tried to throw in the 'no price found' msg within the paranthesis
+        #after melon_name but did not work as expected
+    else:
+        return 'No price found'
 
 
 def word_length_sorted(words):
@@ -70,8 +86,17 @@ def word_length_sorted(words):
         >>> word_length_sorted(["ok", "an", "apple", "a", "day"])
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
+    word_dict = {}
 
-    return []
+    for word in words:
+        wc = len(word)
+        word_dict[wc] = word_dict.get(wc, word.append(word))
+    print word_dict
+
+
+    # for count, lst_word in word_dict.items():
+    #     print lst_word
+    # return sorted(word_dict)
 
 
 def translate_to_pirate_talk(phrase):
@@ -113,7 +138,33 @@ def translate_to_pirate_talk(phrase):
         'me swabbie be not a man!'
     """
 
-    return ""
+    pirate_vocab = {
+        'sir': 'matey',
+        'hotel': 'fleabag inn',
+        'student': 'swabbie',
+        'man': 'matey',
+        'professor': 'foul blaggart',
+        'restaurant': 'galley',
+        'your': 'yer',
+        'excuse': 'arr',
+        'students': 'swabbies',
+        'are': 'be',
+        'restroom': 'head',
+        'my': 'me',
+        'is': 'be',
+    }
+
+    translated_phrase = " "
+    phrase = phrase.split()
+
+    for word in phrase:
+        translated_phrase += pirate_vocab.get(word, word)
+
+    #Wanted to use .join() in above codes, but not sure why the positioning of
+    #each words are not in place
+
+
+    return translated_phrase
 
 
 def kids_game(names):
@@ -158,8 +209,34 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
+    game = {}
+    result = []
+    for name in names:
+        game[name[0]] = name
 
-    return []
+    result.append(names[0])
+    #starting at the first word and place it to list[0]
+    #take the the last letter of the word, word[-1] and look up in dictionary
+    #if the letter is a key in the dictionary, append the value of the key to list
+    #take the last letter of the next word in the list and repeat the same steps until no match found
+
+    #below are some attempts, but didn't work as expected
+    # print game
+        # for char, word in game.items():
+        #     if start in game:
+        #         result.append(word)
+
+    print result
+    # start = names[0]
+    # if start[-1] in game:
+
+    #     print start[-1]
+    # else:
+    #     print game[start[0]]
+
+    # print start
+
+    # return lst
 
 #####################################################################
 # You can ignore everything below this.
